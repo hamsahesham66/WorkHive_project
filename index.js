@@ -4,6 +4,7 @@ import dbConnection from "./config/dataBase.js";
 import ApiError from "./utils/apiError.js";
 import errorMiddleware from "./middleware/errorMiddleWare.js";
 import morgan from 'morgan';
+import cors from 'cors';
 
 // Import routes
 import userRoute from "./API/userRoute.js";
@@ -13,6 +14,7 @@ dotenv.config({ path: "config.env" });
 dbConnection();
 //express app
 const app = express();
+app.use(cors());
 app.use(morgan('dev'));
 
 // middleware

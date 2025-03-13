@@ -9,4 +9,4 @@ router.route("/login").post(authValidator.loginValidator, authUserService.login)
 router.route("/forgotPassword").post(authUserService.forgotPassword);
 router.route("/verifyResetCode").post(authUserService.verifyResetCode);
 
- export default router;
+ export default ;

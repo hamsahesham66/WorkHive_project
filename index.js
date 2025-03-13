@@ -17,6 +17,9 @@ app.use(morgan('dev'));
 
 // middleware
 app.use(express.json());
+app.get('/test', (req, res) => {
+  res.json({ message: 'Test endpoint works!' });
+});
 
 // API routes
 app.use("/api/v1/auth", userRoute);

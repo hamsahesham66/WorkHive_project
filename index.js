@@ -20,7 +20,7 @@ app.use(morgan('dev'));
 // middleware
 app.use(express.json());
 
-app.get("/test", (req, res) => {
+app.get("/testt", (req, res) => {
   res.send("API is running....");
 })
 // API routes

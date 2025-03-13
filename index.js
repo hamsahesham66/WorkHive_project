@@ -31,7 +31,7 @@ app.all('*',(req,res,next)=>{
 })
 app.use(errorMiddleware)
 
-const PORT=process.env.PORT;
+const PORT=process.env.PORT || 8000;
 
   const server=app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);

@@ -20,7 +20,9 @@ app.use(morgan('dev'));
 // middleware
 app.use(express.json());
 
-
+app.get("/", (req, res) => {
+  res.send("API is running....");
+})
 // API routes
 app.use("/api/v1/auth", userRoute);
 

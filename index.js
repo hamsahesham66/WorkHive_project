@@ -18,7 +18,9 @@ app.use(morgan('dev'));
 // middleware
 app.use(express.json());
 
-
+app.get("/", (req, res) => {
+  res.send("Welcome to the Work Hive API!");
+});
 // API routes
 app.use("/api/v1/auth", userRoute);
 

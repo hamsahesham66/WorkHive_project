@@ -6,7 +6,7 @@ import errorMiddleware from "./middleware/errorMiddleWare.js";
 import morgan from 'morgan';
 
 // Import routes
-import userRoute from "./API/userRoute.js";
+import userRoute from "./api/userRoute.js";
 dotenv.config({ path: "config.env" });
 
 //database connection

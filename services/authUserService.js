@@ -113,3 +113,10 @@ export const forgotPassword = asyncHandler(async (req, res, next) => {
       message: "Code verified successfully",
     });
   });
+
+  export const testAPI = asyncHandler(async (req, res) => {
+    res.status(200).json({
+      status: "success",
+      message: "Test API is working!",
+    });
+  });

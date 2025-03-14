@@ -3,11 +3,10 @@ import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: "config.env" });
-export const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER,process.env.DB_PASS, {
+export const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER,null, {
   host: process.env.DB_HOST,
     dialect: "mysql",
     dialectModule: mysql2,
-    timezone: "+02:00", 
     logging: false,
 });
 

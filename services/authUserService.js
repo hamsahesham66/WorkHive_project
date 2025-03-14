@@ -113,10 +113,13 @@ export const forgotPassword = asyncHandler(async (req, res, next) => {
       message: "Code verified successfully",
     });
   });
-
-  export const testAPI = asyncHandler(async (req, res) => {
+  export const getAllUsers = asyncHandler(async (req, res) => {
+    const users = await Customer.findAll(); // Fetch all users from the database
     res.status(200).json({
       status: "success",
-      message: "Test API is working!",
+      results: users.length,
+      data: {
+        users,
+      },
     });
   });

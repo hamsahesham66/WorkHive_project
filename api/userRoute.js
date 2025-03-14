@@ -8,6 +8,6 @@ router.route("/signup").post( authValidator.signUpValidator,authUserService.sign
 router.route("/login").post(authValidator.loginValidator, authUserService.login);
 router.route("/forgotPassword").post(authUserService.forgotPassword);
 router.route("/verifyResetCode").post(authUserService.verifyResetCode);
-router.route("/test").get(authUserService.testAPI);
+router.route("/users").get(authUserService.getAllUsers);
 
  export default router;

@@ -1,13 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
-import dbConnection from "./config/dataBase.js";
-import ApiError from "./utils/apiError.js";
-import errorMiddleware from "./middleware/errorMiddleWare.js";
+import dbConnection from "../config/dataBase.js";
+import ApiError from "../utils/apiError.js";
+import errorMiddleware from "../middleware/errorMiddleWare.js";
 import morgan from 'morgan';
 import cors from 'cors';
 
 // Import routes
-import userRoute from "./API/userRoute.js";
+import userRoute from "./userRoute.js";
 dotenv.config({ path: "config.env" });
 
 //database connection
@@ -32,7 +32,7 @@ app.all('*',(req,res,next)=>{
 app.use(errorMiddleware)
 
 const PORT=process.env.PORT || 8000;
-
+/*
   const server=app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);
   });
@@ -42,4 +42,4 @@ const PORT=process.env.PORT || 8000;
         server.close(() => {
         process.exit(1);
         });
-    });
+    });*/

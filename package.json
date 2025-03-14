@@ -1,10 +1,11 @@
 {
   "name": "graduationproject25",
   "version": "1.0.0",
+  "main": "index.js",
   "type": "module",
- "scripts": {
-    "start": "node api/index.js", 
-    "start:dev": "nodemon api/index.js"
+  "scripts": {
+    "start:dev": "nodemon index.js"
+
   },
   "keywords": [],
   "author": "",

@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "scripts": {
-    "start:dev": "nodemon index.js",
-    "postinstall": "npm install"
-
-
-  },
+ "scripts": {
+  "start:dev": "nodemon index.js",
+  "postinstall": "echo 'Post-install script executed'"
+},
   "keywords": [],
   "author": "",
   "engines": {

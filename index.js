@@ -7,7 +7,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 // Import routes
-import userRoute from "./api/userRoute.js";
+import authRoute from "./routes/authRoute.js";
+import userRoute from "./routes/userRoute.js";
 dotenv.config({ path: "config.env" });
 
 //database connection
@@ -24,7 +25,8 @@ app.get("/testt", (req, res) => {
   res.send("API is running....");
 })
 // API routes
-app.use("/api/v1/auth", userRoute);
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/users", userRoute);
 
 app.all('*',(req,res,next)=>{
   next(new ApiError(`cannot find this route ${req.originalUrl}`,400 ))

@@ -34,6 +34,11 @@ const PasswordReset = sequelize.define('PasswordReset', {
     allowNull: false,
     defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
   },
+  is_verified: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,  // Default to false (OTP not verified)
+  },
 }, {
   tableName: 'password_resets',
   timestamps: true,

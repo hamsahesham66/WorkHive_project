@@ -8,7 +8,7 @@ import crypto from "crypto";
 import { sendEmail } from "../utils/sendEmail.js";
 import { Sequelize } from "sequelize";
 import generateToken from "../utils/createToken.js";
-
+import jwt from "jsonwebtoken";
 // @desc Sign up user
 // @route POST /api/v1/auth/signup
 // @access public
@@ -184,3 +184,37 @@ export const resetPassword = asyncHandler(async (req, res, next) => {
   });
 });
 
+  // @desc Protect routes and routes for authenticated users(make sure user is logged in)
+  // @access private
+  export const protect = asyncHandler(async (req, res, next) => {
+    // TODO: Implement protecting routes using JWT (JSON Web Tokens)
+    // 1- get token and check if it exists
+    let token;
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
+      
+    }
+    if (!token) {
+      return next(new ApiError(
+          "You are not authorized to access this route, please login to access this route",
+          401));
+        }
+    // 2- i want to verify that the token is valid
+    //const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+ const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+    const currentUser = await Customer.findOne({ where: { id: decoded.id } });
+     if (!currentUser) {
+       return next(new ApiError("User no longer exists", 401));
+    }
+    //4- check if user changed password after token was issued
+    if (decoded.passwordHash !== currentUser.password) {
+    return next(new ApiError("User changed password! Please login again", 401));
+  }              /// don't forget to implement this
+    req.user = currentUser;
+    next();
+  });

@@ -7,8 +7,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 // Import routes
-import authRoute from "./routes/authRoute.js";
-import userRoute from "./routes/userRoute.js";
+import authRoute from "./api/authRoute.js";
+import userRoute from "./api/userRoute.js";
 dotenv.config({ path: "config.env" });
 
 //database connection

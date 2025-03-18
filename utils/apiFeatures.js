@@ -1,3 +1,4 @@
+import { Sequelize } from "sequelize";
 class ApiFeatures {
     constructor(sequelizeQuery, queryString) {
       this.sequelizeQuery = sequelizeQuery;
@@ -31,28 +32,27 @@ class ApiFeatures {
     }
   
     // 🔹 Sorting
-    sort() {
-      if (this.queryString.sort) {
-        const sortBy = this.queryString.sort.split(',').map((field) => {
-          return field.startsWith('-') ? [field.substring(1), 'DESC'] : [field, 'ASC'];
-        });
-        this.sequelizeQuery.order = sortBy;
-      } else {
-        this.sequelizeQuery.order = [['createdAt', 'DESC']];
-      }
-      return this;
+   // 🔹 Sorting
+sort() {
+    if (this.queryString.sort) {
+      const sortBy = this.queryString.sort.split(',').map((field) => {
+        return field.startsWith('-') ? [field.substring(1), 'DESC'] : [field, 'ASC'];
+      });
+      this.sequelizeQuery.order = sortBy; // Apply sorting to the order clause
+    } else {
+      this.sequelizeQuery.order = [['createdAt', 'DESC']]; // Default sorting
     }
+    return this;
+  }
   
     // 🔹 Field Selection
     selectFields() {
-      if (this.queryString.fields) {
-        const fields = this.queryString.fields.split(',');
-        this.sequelizeQuery.attributes = fields;
-      } else {
-        this.sequelizeQuery.attributes = { exclude: ['__v'] };
+        if (this.queryString.fields) {
+          const fields = this.queryString.fields.split(',');
+          this.sequelizeQuery.attributes = fields;
+        }
+        return this;
       }
-      return this;
-    }
   
     // 🔹 Search Functionality
     search(modelName) {
@@ -63,12 +63,12 @@ class ApiFeatures {
         if (modelName === 'Products') {
           whereClause = {
             [Sequelize.Op.or]: [
-              { title: { [Sequelize.Op.iLike]: `%${search}%` } },
-              { description: { [Sequelize.Op.iLike]: `%${search}%` } }
+                { title: { [Sequelize.Op.like]: `%${search}%` } }, 
+                { description: { [Sequelize.Op.like]: `%${search}%` } }
             ]
           };
         } else {
-          whereClause = { name: { [Sequelize.Op.iLike]: `%${search}%` } };
+          whereClause = { fullname: { [Sequelize.Op.like]: `%${search}%` } };
         }
   
         this.sequelizeQuery.where = { ...this.sequelizeQuery.where, ...whereClause };
@@ -91,8 +91,7 @@ class ApiFeatures {
         currentPage: page,
         totalPages: totalPages,
         totalResults: countDocuments,
-        prevPage: page > 1 ? page - 1 : null,
-        nextPage: page * limit < countDocuments ? page + 1 : null,
+       
       };
   
       return this;

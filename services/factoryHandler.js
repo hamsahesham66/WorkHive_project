@@ -1,4 +1,5 @@
 import asyncHandler from "express-async-handler";
+import ApiFeatures from "../utils/apiFeatures.js";
 export const getAll = (Model,modelName='') =>
     asyncHandler(async (req, res) => {
       let filter = {};
@@ -7,18 +8,17 @@ export const getAll = (Model,modelName='') =>
       }
       //build query
       const totalDocuments = await Model.count({ where: filter });
-      const apiFeatures = new ApiFeatures(Model.findAll({ where: filter }), req.query)
+      const apiFeatures = new ApiFeatures({ where: filter }, req.query)
       .filter()
       .sort()
       .selectFields()
       .search(modelName)
       .paginate(totalDocuments);
-  
-      const { sequelizeQuery, paginationResult } = apiFeatures;
-      const documents = await sequelizeQuery;
+      const documents = await Model.findAll(apiFeatures.sequelizeQuery);
+
       res.status(200).json({
       results: documents.length,
-      paginationResult,
+      paginationResult: apiFeatures.paginationResult,
       data: documents,
     });
   });

@@ -23,8 +23,11 @@ const Customer = sequelize.define('Customer', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true
-    ,validate: {
+    unique: {
+      name: 'unique_email', // Explicitly name the unique constraint
+      msg: 'Email address must be unique', // Custom error message
+    },
+    validate: {
         isEmail: {
           msg: 'Must be a valid email',
         },

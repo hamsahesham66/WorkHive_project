@@ -8,6 +8,7 @@ export const generateToken = (user) => {
     phone: user.phone,
     role: user.role,
     gender: user.gender,
+    passwordHash: user.password,
  };
 
   return jwt.sign(payload, process.env.JWT_SECRET_KEY, {

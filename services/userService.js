@@ -78,7 +78,7 @@ export const updateLoggedUserPassword = asyncHandler(async (req, res, next) => {
       { password: hashedPassword},
       { where: { id: userId } }
     );
-      // 7️⃣ Retrieve the updated user to get the latest data
+    // 7️⃣ Retrieve the updated user to get the latest data
     const updatedUser = await Customer.findOne({ where: { id: userId } });
 
     // 8️⃣ Generate a new JWT token with updated user data

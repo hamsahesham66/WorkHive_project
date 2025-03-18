@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config({ path: "config.env" });
 export const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER,null, {
   host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
     dialect: "mysql",
     dialectModule: mysql2,
     logging: false,

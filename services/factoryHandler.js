@@ -31,7 +31,7 @@ export const getAll = (Model,modelName='') =>
   
    export const getOne = (Model) =>
       asyncHandler(async (req, res,next) => {
-        const document = await Model.findById(req.params.id);
+        const document = await Model.findByPk(req.params.id);
         if (!document) {
           return next(new ApiError(`no document for this id ${req.params.id}`,404))
         }

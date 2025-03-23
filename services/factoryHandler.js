@@ -22,3 +22,19 @@ export const getAll = (Model,modelName='') =>
       data: documents,
     });
   });
+
+  export const createOne = (Model) =>
+    asyncHandler(async (req, res) => {
+      const newDocument = await Model.create(req.body);
+      res.status(201).json({ data: newDocument });
+    })
+  
+   export const getOne = (Model) =>
+      asyncHandler(async (req, res,next) => {
+        const document = await Model.findById(req.params.id);
+        if (!document) {
+          return next(new ApiError(`no document for this id ${req.params.id}`,404))
+        }
+        res.status(200).json({ data: document });
+      }); 
+    

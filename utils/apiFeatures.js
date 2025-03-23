@@ -40,7 +40,7 @@ sort() {
       });
       this.sequelizeQuery.order = sortBy; // Apply sorting to the order clause
     } else {
-      this.sequelizeQuery.order = [['createdAt', 'DESC']]; // Default sorting
+      this.sequelizeQuery.order = [['created_at', 'DESC']]; // Default sorting
     }
     return this;
   }

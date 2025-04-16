@@ -39,9 +39,7 @@ sort() {
         return field.startsWith('-') ? [field.substring(1), 'DESC'] : [field, 'ASC'];
       });
       this.sequelizeQuery.order = sortBy; // Apply sorting to the order clause
-    } else {
-      this.sequelizeQuery.order = [['created_at', 'DESC']]; // Default sorting
-    }
+    } 
     return this;
   }
   

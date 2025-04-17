@@ -10,6 +10,7 @@ import cors from 'cors';
 import authRoute from "./api/authRoute.js";
 import userRoute from "./api/userRoute.js";
 import categoryRoute from "./api/categoryRoute.js";
+import contactUsRoute from "./api/contactUsRoute.js";
 dotenv.config({ path: "config.env" });
 
 //database connection
@@ -29,6 +30,7 @@ app.get("/testt", (req, res) => {
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/categories",categoryRoute)
+app.use("/api/v1/contactUs",contactUsRoute)
 
 app.all('*',(req,res,next)=>{
   next(new ApiError(`cannot find this route ${req.originalUrl}`,400 ))

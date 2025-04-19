@@ -11,6 +11,12 @@ import authRoute from "./api/authRoute.js";
 import userRoute from "./api/userRoute.js";
 import categoryRoute from "./api/categoryRoute.js";
 import contactUsRoute from "./api/contactUsRoute.js";
+import serviceProviderRoute from "./api/serviceProviderRoute.js";
+import reviewRoute from "./api/reviewRoute.js";
+import serviceRoute from "./api/serviceRoute.js";
+
+
+
 dotenv.config({ path: "config.env" });
 
 //database connection
@@ -31,6 +37,9 @@ app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/categories",categoryRoute)
 app.use("/api/v1/contactUs",contactUsRoute)
+app.use("/api/v1", serviceProviderRoute);
+app.use("/api/v1/reviews", reviewRoute);
+app.use("/api/v1", serviceRoute);
 
 app.all('*',(req,res,next)=>{
   next(new ApiError(`cannot find this route ${req.originalUrl}`,400 ))

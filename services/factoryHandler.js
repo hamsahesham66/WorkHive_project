@@ -25,10 +25,19 @@ export const getAll = (Model,modelName='') =>
 
   export const createOne = (Model) =>
     asyncHandler(async (req, res) => {
-      const newDocument = await Model.create(req.body);
-      res.status(201).json({ data: newDocument });
-    })
-  
+      try {
+        const newDocument = await Model.create(req.body);
+        res.status(201).json({
+          status: "success", // Add status field
+          data: newDocument,
+        });
+      } catch (error) {
+        res.status(400).json({
+          status: "fail", // Add status field for failure
+          message: error.message,
+        });
+      }
+    });
    export const getOne = (Model) =>
       asyncHandler(async (req, res,next) => {
         const document = await Model.findByPk(req.params.id);

@@ -56,10 +56,10 @@ const Booking = sequelize.define(
       allowNull: true,
     },
     status: {
-      type: DataTypes.ENUM("pending", "confirmed", "completed", "cancelled"), // Enum for booking status
-      allowNull: false,
-      defaultValue: "pending",
-    },
+        type: DataTypes.BOOLEAN, 
+        allowNull: false,
+        defaultValue: false, // Default to 0 (false)
+      },
     booking_date: {
       type: DataTypes.DATEONLY, // Stores only the date (YYYY-MM-DD)
       allowNull: false,
@@ -67,18 +67,6 @@ const Booking = sequelize.define(
     booking_time: {
       type: DataTypes.TIME, // Stores only the time (HH:mm:ss)
       allowNull: false,
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.literal(
-        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
-      ),
     },
   },
   {

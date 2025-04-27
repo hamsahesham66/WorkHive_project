@@ -58,7 +58,7 @@ const Booking = sequelize.define(
     status: {
         type: DataTypes.BOOLEAN, 
         allowNull: false,
-        defaultValue: false, // Default to 0 (false)
+        defaultValue: true, // Default to 0 (false)
       },
     booking_date: {
       type: DataTypes.DATEONLY, // Stores only the date (YYYY-MM-DD)
@@ -67,6 +67,11 @@ const Booking = sequelize.define(
     booking_time: {
       type: DataTypes.TIME, // Stores only the time (HH:mm:ss)
       allowNull: false,
+    },
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
     },
   },
   {

@@ -16,7 +16,7 @@ export const createBooking = factory.createOne(Booking);
 // @route GET /api/v1/bookings
 // @access Public
 export const getUserBookings = asyncHandler(async (req, res) => {
-    const { customerId } = req.params;
+    const customerId = req.user.id;
   
     const bookings = await Booking.findAll({
       where: { customerId },

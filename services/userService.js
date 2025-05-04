@@ -90,3 +90,14 @@ export const updateLoggedUserPassword = asyncHandler(async (req, res, next) => {
     });
   });
 
+
+// @desc Get logged-in user data
+// @route GET /api/v1/auth/getMe
+// @access private
+
+export const getUserById=factory.getOne(Customer)
+
+export const getLoggedUserData = asyncHandler(async (req, res, next) => {
+  req.params.id = req.user.id; 
+  next();
+})

@@ -5,7 +5,10 @@ const router = express.Router();
 
 router.route("/").get(userService.getUsers);
 
-router.put('/updateMe',authUserService.protect, userService.updateLoggedUserData);
-router.put('/changeMyPassword',authUserService.protect, userService.updateLoggedUserPassword);
+router.use(authUserService.protect)
+
+router.put('/updateMe', userService.updateLoggedUserData);
+router.put('/changeMyPassword', userService.updateLoggedUserPassword);
+router.get('/getMe',userService.getLoggedUserData,userService.getUserById);
 
 export default router;

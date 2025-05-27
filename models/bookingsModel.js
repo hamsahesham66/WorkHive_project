@@ -68,6 +68,11 @@ const Booking = sequelize.define(
       type: DataTypes.TIME, // Stores only the time (HH:mm:ss)
       allowNull: false,
     },
+    paymentMethod :{
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "cash", // Default payment method
+    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,

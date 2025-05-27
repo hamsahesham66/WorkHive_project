@@ -20,7 +20,7 @@ export const getUserBookings = asyncHandler(async (req, res) => {
   
     const bookings = await Booking.findAll({
       where: { customerId },
-      attributes: ["id", "booking_date", "booking_time","status"],
+      attributes: ["id", "booking_date", "booking_time","status","paymentMethod"],
       include: [
         {
           model: Service,

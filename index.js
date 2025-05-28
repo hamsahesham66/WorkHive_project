@@ -17,7 +17,7 @@ import serviceRoute from "./api/serviceRoute.js";
 import serviceProvScheduleRoute from "./api/serviceProvScheduleRoute.js";
 import bookingRoute from "./api/bookingRoute.js";
 import paymentRoute from "./api/paymentRoute.js";
-
+import workersApplicationsRoute from "./api/workersApplicationsRoute.js";
 
 dotenv.config({ path: "config.env" });
 
@@ -45,6 +45,8 @@ app.use("/api/v1", serviceRoute);
 app.use("/api/v1", serviceProvScheduleRoute);
 app.use("/api/v1/bookings", bookingRoute);
 app.use("/api/v1/payments", paymentRoute);
+app.use("/api/v1/joinUs", workersApplicationsRoute);
+
 
 app.all('*',(req,res,next)=>{
   next(new ApiError(`cannot find this route ${req.originalUrl}`,400 ))

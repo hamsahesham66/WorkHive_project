@@ -25,23 +25,23 @@ const WorkersApplications = sequelize.define("WorkersApplications", {
   },
   age: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull:false ,
   },
   photo: {
     type: DataTypes.BLOB("long"),
-    allowNull: true,
+    allowNull: false,
   },
   front_id: {
     type: DataTypes.BLOB("long"),
-    allowNull: true,
+    allowNull: false,
   },
   back_id: {
     type: DataTypes.BLOB("long"),
-    allowNull: true,
+    allowNull: false,
   },
   region: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   categoryId: {
     type: DataTypes.INTEGER,
@@ -53,7 +53,7 @@ const WorkersApplications = sequelize.define("WorkersApplications", {
   },
   working_days: {
     type: DataTypes.TEXT,
-    allowNull: true,
+    allowNull: false,
     validate: {
       isJson(value) {
         try {
@@ -65,8 +65,8 @@ const WorkersApplications = sequelize.define("WorkersApplications", {
     },
   },
   experience: {
-    type: DataTypes.TEXT,
-    allowNull: true,
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
   terms: {
     type: DataTypes.BOOLEAN,

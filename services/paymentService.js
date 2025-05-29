@@ -17,6 +17,7 @@ export const createCheckoutSession = asyncHandler(async (req, res) => {
     region,
     booking_date,
     booking_time,
+    paymentMethod,
   } = req.body;
   const customerId = req.user.id; // Extract customer ID from the token
 

@@ -25,7 +25,7 @@ export const getUserBookings = asyncHandler(async (req, res) => {
         {
           model: Service,
           as: "service",
-          attributes: ["id", "name"],
+          attributes: ["id", "name","price"],
           include: [
             {
               model: Category,

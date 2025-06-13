@@ -26,6 +26,7 @@ export const createConversation = asyncHandler(async (req, res) => {
     // If no conversation exists, create a new one
     const newConversation = await Conversations.create({
       customer_id,
+      admin_id: 1,
     });
 
     res.status(201).json({

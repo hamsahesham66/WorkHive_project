@@ -20,6 +20,8 @@ import paymentRoute from "./api/paymentRoute.js";
 import workersApplicationsRoute from "./api/workersApplicationsRoute.js";
 import conversationsRoute from "./api/conversationsRoute.js";
 import messagesRoute from "./api/messagesRoute.js";
+import notificationsRoute from "./api/notificationsRoute.js";
+
 dotenv.config({ path: "config.env" });
 
 //database connection
@@ -49,6 +51,7 @@ app.use("/api/v1/payments", paymentRoute);
 app.use("/api/v1/joinUs", workersApplicationsRoute);
 app.use("/api/v1/conversations", conversationsRoute);
 app.use("/api/v1/messages", messagesRoute);
+app.use("/api/v1/notifications", notificationsRoute);
 app.all('*',(req,res,next)=>{
   next(new ApiError(`cannot find this route ${req.originalUrl}`,400 ))
 })

@@ -32,7 +32,8 @@ notifications, chat, and more. It integrates with Cloudinary for file uploads an
 ## Prerequisites
 This project requires the following dependencies:
 
-- **Programming Language**: JavaScript  
+- **Programming Language**: JavaScript
+- **Runtime Environment**: Node.js
 - **Package Manager**: Npm  
 ## Installation
 Build WorkHive_project from the source and install dependencies:

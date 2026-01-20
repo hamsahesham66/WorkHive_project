@@ -15,7 +15,7 @@ A platform for connecting service providers with customers.
 
 ## Table of Contents
 - [Overview](#Overview)
-- [Getting Started](#GettingStarted)
+- [Getting Started](#Getting-Started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Usage](#usage)

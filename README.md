@@ -21,6 +21,7 @@ A platform for connecting service providers with customers.
   - [Usage](#usage)
 
 - [Features](#features)
+- [API Documentation](## 📚 API Documentation).
   
   ---
 # Overview

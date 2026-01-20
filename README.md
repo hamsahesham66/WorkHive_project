@@ -79,3 +79,11 @@ npm run start:dev
 - **Error Handling:** Centralized error middleware.
 - **Validation:** Express-validator for request validation.
 - **Environment Configuration:** Uses `.env` for secrets and config.
+
+## 📚 API Documentation
+
+We have detailed API documentation hosted on Postman.
+
+[![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](https://documenter.getpostman.com/view/39201675/2sB2ixju5U)
+
+> **Tip:** Click the button above to see the full list of endpoints, example requests, and responses.

@@ -81,7 +81,7 @@ npm run start:dev
 - **Validation:** Express-validator for request validation.
 - **Environment Configuration:** Uses `.env` for secrets and config.
 
-## 📚 API Documentation
+## API Documentation
 
 We have detailed API documentation hosted on Postman.
 
